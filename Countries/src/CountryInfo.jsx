@@ -6,7 +6,7 @@ const CountryInfo = ({country}) => {
     const [weather, setWeather] = useState([])
 
     useEffect(() => {
-        axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${country["name"]["common"]}?key=C9693ZU2SXVHRA4EPQKSZ4RE2`)
+        axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${country["name"]["common"]}?key=${import.meta.env.VITE_WEATHER_API_KEY}`)
         .then(response => {
             setWeather(response.data.currentConditions)
         })
