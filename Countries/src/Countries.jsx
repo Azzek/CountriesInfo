@@ -1,10 +1,9 @@
 import CountryInfo from './CountryInfo'
 
-
-
 const countries = ({countries, selectCountry}) => {
 
     if (countries.length > 1 && countries.length < 10) {
+
         return (
         countries.map(c => (
             <li key={c["name"]["common"]}>

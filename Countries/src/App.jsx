@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Countries from './Countries'
+
+
 function App() {
 
   const [countryFilter, setCountryFilter] = useState('')
@@ -18,6 +20,7 @@ function App() {
   const handleCountryChange = (e) => {
     setCountryFilter(e.target.value)
   }
+
   const filteredCountries = countryFilter.length > 0? countries.filter(c => c["name"]["common"].toLowerCase().includes(countryFilter.toLowerCase())) : []
 
 
@@ -27,11 +30,11 @@ function App() {
       <span className='input-text'>
         Find countries:
       </span>
+
       <input placeholder='Find ur country 😁' value={countryFilter} onChange={handleCountryChange}/>
       
-        
-
         <Countries countries={filteredCountries} selectCountry={setCountryFilter}/>
+        
     </div>
   )
 }

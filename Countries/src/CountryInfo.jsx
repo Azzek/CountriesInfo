@@ -4,6 +4,7 @@ import axios from "axios"
 const CountryInfo = ({country}) => {
 
     const [weather, setWeather] = useState([])
+
     useEffect(() => {
         axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${country["name"]["common"]}?key=C9693ZU2SXVHRA4EPQKSZ4RE2`)
         .then(response => {
@@ -11,19 +12,16 @@ const CountryInfo = ({country}) => {
         })
     }, [])
     
-    console.log(weather)
     return (
         <>
             <h1>{country["name"]["common"]}</h1>
 
             <h2>{Object.keys(country["languages"]).length > 1? "languages:" : "language:"}</h2>
 
-            <ul>
-                {Object.keys(country["languages"]).map(key => (
-                    <li key={key}>{country["languages"][key]}</li>
-                )
-                )}
-            </ul>
+            {Object.keys(country["languages"]).map(key => (
+                <p key={key}>{country["languages"][key]}</p>
+            )
+            )}
 
             <img src={country["flags"]["png"]}/>
             
